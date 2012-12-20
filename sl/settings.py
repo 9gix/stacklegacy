@@ -126,6 +126,7 @@ INSTALLED_APPS = (
 
     # Internal Apps
     'accounts',
+    'stack',
 
     # 3rd Party Apps
     'django_extensions',
