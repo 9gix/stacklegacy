@@ -4,3 +4,7 @@ function SystemListCtrl($scope, $http){
     });
     $scope.orderProp = 'name';
 }
+
+function SystemDetailCtrl($scope){
+    $scope.systemId = $routeParams.systemId;
+}
