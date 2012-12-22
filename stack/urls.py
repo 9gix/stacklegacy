@@ -2,11 +2,12 @@ from django.conf.urls import patterns, url, include
 from stack.views import StackListView, StackDetailView
 
 from tastypie.api import Api
-from stack.api import AppResource, AppStackResource
+from stack.api import AppResource, AppStackResource, StackResource
 
 v1_api = Api(api_name='v1')
 v1_api.register(AppResource())
 v1_api.register(AppStackResource())
+v1_api.register(StackResource())
 
 
 urlpatterns = patterns('',

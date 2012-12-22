@@ -1,1 +1,13 @@
-TODO
+<img ng-src="{{system.logo}}" class="system">
+<h1>{{system.name}}</h1>
+<p>{{system.description}}</p>
+<ul>
+  <li ng-repeat="appstack in system.stacks">
+    <a ng-href="/#/systems/{{appstack.stack.id}}">{{appstack.stack.name}}</a>
+    <a ng-click="modalShown=true">Open 1</a>
+    <div ui-modal class="fade" ng-model="modalShown" id="appstack-{{appstack.id}}" >
+      <h3>{{system.name}} using {{appstack.stack.name}}</h3>
+      <p>{{appstack.description}}
+    </div>
+  </li>
+</ul>

@@ -1,6 +1,6 @@
 'use strict';
 
-var slApp = angular.module('slApp', [])
+var slApp = angular.module('slApp', ['ui','ui.directives', 'ui.filters'])
     .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/systems', {
