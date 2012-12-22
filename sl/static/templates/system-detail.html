@@ -1,13 +1,30 @@
-<img ng-src="{{system.logo}}" class="system">
-<h1>{{system.name}}</h1>
-<p>{{system.description}}</p>
-<ul>
-  <li ng-repeat="appstack in system.stacks">
-    <a ng-href="/#/systems/{{appstack.stack.id}}">{{appstack.stack.name}}</a>
-    <a ng-click="modalShown=true">Open 1</a>
-    <div ui-modal class="fade" ng-model="modalShown" id="appstack-{{appstack.id}}" >
-      <h3>{{system.name}} using {{appstack.stack.name}}</h3>
-      <p>{{appstack.description}}
-    </div>
-  </li>
-</ul>
+<div class="row">
+  <div class="span3">
+  <img ng-src="{{system.logo}}" class="system">
+  </div>
+  <div class="span8">
+    <h1>{{system.name}}</h1>
+    <p>{{system.description}}</p>
+  </div>
+</div>
+<div class="row">
+  <h2 ng-show="system.stacks">Stack List:</h2>
+  <ul>
+    <li ng-repeat="appstack in system.stacks">
+      <a ng-click="modalShown=true" >{{appstack.stack.name}}</a>
+      <div ui-modal class="fade" ng-model="modalShown" id="appstack-{{appstack.id}}" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3>{{system.name}} using {{appstack.stack.name}}</h3>
+        </div>
+        <div class="modal-body">
+          <p>{{appstack.description}}</p>
+        </div>
+        <div class="modal-footer">
+          <a class="btn" ng-click="modalShown=false">Close</a>
+          <a class="btn btn-primary" ng-href="/#/systems/{{appstack.stack.id}}" ng-click="modalShown=false">Go to {{appstack.stack.name}}</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

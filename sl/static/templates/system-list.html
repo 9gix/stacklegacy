@@ -4,8 +4,10 @@
       <h2>Featured Systems</h2>
       <div class="span3" ng-repeat="system in systems | filter:query | orderBy:orderProp">
         <a href="#/systems/{{ system.id }}" class="thumb"><img ng-src="{{ system.logo }}"></a>
-        <a href="#/systems/{{ system.id }}" class="thumb">{{ system.name }}</a>
-        <p>{{ system.description }}</p>
+        <div class="row">
+          <a href="#/systems/{{ system.id }}" class="thumb">{{ system.name }}</a>
+          <p>{{ system.description }}</p>
+        </div>
       </div>
     </div>
   </div>

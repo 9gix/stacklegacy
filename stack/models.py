@@ -1,9 +1,15 @@
 from django.db import models
+from imagekit.models import ProcessedImageField
+from imagekit.processors.resize import ResizeToFit
+
 
 class App(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
-    logo = models.ImageField(upload_to='logo', null=True, blank=True)
+    logo = ProcessedImageField(processors=[ResizeToFit(200,200)],
+            upload_to='logo', null=True, blank=True,
+            format='JPEG', options={'quality':90})
+
     official_site = models.URLField()
     stacks = models.ManyToManyField('self', through='AppStack',
             symmetrical=False)
