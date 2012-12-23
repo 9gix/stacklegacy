@@ -9,7 +9,7 @@ class App(models.Model):
     logo = ProcessedImageField(processors=[ResizeToFit(200,200)],
             upload_to='logo', null=True, blank=True,
             format='JPEG', options={'quality':90})
-
+    slug = models.SlugField(unique=True)
     official_site = models.URLField()
     stacks = models.ManyToManyField('self', through='AppStack',
             symmetrical=False)
