@@ -5,8 +5,8 @@ function SystemListCtrl($scope, $http){
     $scope.orderProp = 'name';
 }
 
-function SystemDetailCtrl($scope, $routeParams, $http){
-    $http.get('stack/api/v1/app/' + $routeParams.systemId + '/?format=json'
+function SystemDetailCtrl($scope, $routeParams,  $http){
+    $http.get('stack/api/v1/app/' + $routeParams.systemSlug + '/?format=json'
             ).success(function(system){
                 $scope.system = system;
             });
