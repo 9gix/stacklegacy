@@ -7,6 +7,7 @@ class AppResource(ModelResource):
     stacks = fields.ToManyField('stack.api.AppStackResource',
             attribute=lambda bundle: bundle.obj.stacks.through.objects.filter(
                 app=bundle.obj), full=True, null=True)
+    references = fields.ToManyField('stack.api.ReferenceResource', 'references', null=True, full=True)
     class Meta:
         queryset = App.objects.all()
 
@@ -19,6 +20,7 @@ class AppResource(ModelResource):
 
 class AppStackResource(ModelResource):
     stack = fields.ToOneField(AppResource, 'stack', full=True, max_depth=2)
+    references = fields.ToManyField('stack.api.ReferenceResource', 'references', null=True, full=True)
 
     class Meta:
         queryset = AppStack.objects.all()
@@ -29,3 +31,14 @@ class StackResource(ModelResource):
 
     class Meta:
         queryset = App.objects.all()
+
+from tastypie.contrib.contenttypes.fields import GenericForeignKeyField
+from ref.models import Reference
+
+class ReferenceResource(ModelResource):
+
+    class Meta:
+        resource_name = 'reference'
+        queryset = Reference.objects.all()
+        fields = ['url']
+        include_resource_uri = False

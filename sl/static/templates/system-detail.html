@@ -5,6 +5,12 @@
   <div class="span8">
     <h1>{{system.name}}</h1>
     <p>{{system.description}}</p>
+    <h4 ng-show="system.references.length">References:</h4>
+    <ul>
+      <li ng-repeat="reference in system.references">
+        <a ng-href="{{reference.url}}">{{reference.url}}</a>
+      </li>
+    </ul>
   </div>
 </div>
 <div class="row">
@@ -19,6 +25,12 @@
         </div>
         <div class="modal-body">
           <p>{{appstack.description}}</p>
+          <h4 ng-show="appstack.references.length">References:</h4>
+          <ul>
+            <li ng-repeat="reference in appstack.references">
+              <a ng-href="{{ reference.url }}">{{ reference.url }}</a>
+            </li>
+          </ul>
         </div>
         <div class="modal-footer">
           <a class="btn" ng-click="modalShown=false">Close</a>

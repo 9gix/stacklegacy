@@ -126,6 +126,7 @@ INSTALLED_APPS = (
 
     # Internal Apps
     'accounts',
+    'ref',
     'stack',
 
     # 3rd Party Apps

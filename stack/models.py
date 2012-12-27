@@ -1,7 +1,8 @@
 from django.db import models
 from imagekit.models import ProcessedImageField
 from imagekit.processors.resize import ResizeToFit
-
+from django.contrib.contenttypes import generic
+from ref.models import Reference
 
 class App(models.Model):
     name = models.CharField(max_length=150)
@@ -13,6 +14,7 @@ class App(models.Model):
     official_site = models.URLField()
     stacks = models.ManyToManyField('self', through='AppStack',
             symmetrical=False)
+    references = generic.GenericRelation(Reference)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -34,6 +36,7 @@ class AppStack(models.Model):
     description = models.TextField()
     used_since = models.DateField(blank=True, null=True)
     used_until = models.DateField(blank=True, null=True)
+    references = generic.GenericRelation(Reference)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
