@@ -46,9 +46,6 @@
                     </a>
                     <a class="brand" href="#">StackLegacy</a>
                     <div class="nav-collapse collapse">
-                        <ul class="nav pull-right">
-                          <li><a href="#">Login</a></li>
-                        </ul>
                         {% block navbar %}
                         {% endblock %}
                     </div><!--/.nav-collapse -->
@@ -57,9 +54,11 @@
             </div>
         </div>
 
-        <div class="container" ng-view>
+        <div class="container">
 
-          {% block content %}{% endblock %}
+            <div ng-view class="clearfix">
+              {% block content %}{% endblock %}
+            </div>
 
             <hr>
 
