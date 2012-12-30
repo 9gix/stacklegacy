@@ -4,6 +4,12 @@ from imagekit.processors.resize import ResizeToFit
 from django.contrib.contenttypes import generic
 from ref.models import Reference
 
+class Architecture(models.Model):
+    app = models.ForeignKey('App')
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    references = generic.GenericRelation(Reference)
+
 class App(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
@@ -14,7 +20,6 @@ class App(models.Model):
     official_site = models.URLField()
     stacks = models.ManyToManyField('self', through='AppStack',
             symmetrical=False)
-    references = generic.GenericRelation(Reference)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)

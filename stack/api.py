@@ -1,13 +1,19 @@
 from tastypie.resources import Resource, ModelResource, ALL
 from tastypie import fields
-from stack.models import App, AppStack
+from stack.models import App, AppStack, Architecture
 from django.conf.urls import url
+
+class ArchitectureResource(ModelResource):
+    references = fields.ToManyField('stack.api.ReferenceResource', 'references', null=True, full=True)
+
+    class Meta:
+        queryset = Architecture.objects.all()
 
 class AppResource(ModelResource):
     stacks = fields.ToManyField('stack.api.AppStackResource',
             attribute=lambda bundle: bundle.obj.stacks.through.objects.filter(
                 app=bundle.obj), full=True, null=True)
-    references = fields.ToManyField('stack.api.ReferenceResource', 'references', null=True, full=True)
+    architectures = fields.ToManyField('stack.api.ArchitectureResource', lambda bundle: Architecture.objects.filter(app=bundle.obj), null=True, full=True)
     class Meta:
         queryset = App.objects.all()
 
