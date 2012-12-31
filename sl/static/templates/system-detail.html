@@ -5,6 +5,7 @@
   <div class="span8">
     <h1>{{system.name}}</h1>
     <p>{{system.description}}</p>
+    <p ng-show="system.official_site">Site: <a ng-href="{{system.official_site}}">{{system.official_site}}</a></p>
   </div>
 </header>
 <aside class="span3">
