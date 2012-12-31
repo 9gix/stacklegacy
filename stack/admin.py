@@ -9,6 +9,7 @@ class ArchitectureAdmin(admin.ModelAdmin):
     inlines = [ReferenceInline,]
 
 class AppAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
     inlines = [ArchitectureInline,]
 
 class AppStackAdmin(admin.ModelAdmin):
