@@ -16,6 +16,7 @@ class AppResource(ModelResource):
     architectures = fields.ToManyField('stack.api.ArchitectureResource', lambda bundle: Architecture.objects.filter(app=bundle.obj), null=True, full=True)
     class Meta:
         queryset = App.objects.all()
+        ordering = ['modified_at', 'created_at', 'name']
 
     def prepend_urls(self):
         return [
