@@ -3,6 +3,13 @@ from tastypie import fields
 from stack.models import App, AppStack, Architecture
 from django.conf.urls import url
 
+class SystemResource(ModelResource):
+    class Meta:
+        queryset = App.objects.all()
+        ordering = ['modified_at']
+        fields = ['name', 'description', 'slug', 'modified_at','logo']
+        include_resource_uri = False
+
 class ArchitectureResource(ModelResource):
     references = fields.ToManyField('stack.api.ReferenceResource', 'references', null=True, full=True)
 
