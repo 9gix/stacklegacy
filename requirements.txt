@@ -1,9 +1,22 @@
+#Migration
 south>=0.7.6
-django-extensions>=1.0.1
-ipdb
-PIL>=1.1.7
+
+# Debugging
 ipython>=0.13.1
-django-registration>=0.8
+ipdb
+django-extensions>=1.0.1
 django-debug-toolbar>=0.9.4
-django-imagekit>=2.0.2
+
+# API
 -e git://github.com/sbnoemi/django-tastypie.git#egg=django_tastypie
+
+# Imaging Library
+PIL>=1.1.7
+django-imagekit>=2.0.2
+
+# Elastic Search
+pyelasticsearch
+-e git://github.com/toastdriven/django-haystack.git#egg=haystack
+
+# Registration
+django-registration>=0.8
