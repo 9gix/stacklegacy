@@ -20,6 +20,8 @@
         </div>
         <div class="modal-body">
           <p>{{appstack.description}}</p>
+          <p ng-show="appstack.used_since">Since: {{appstack.used_since}}</p>
+          <p ng-show="appstack.used_until">Until: {{appstack.used_until}}</p>
           <h4 ng-show="appstack.references.length">References:</h4>
           <ul>
             <li ng-repeat="reference in appstack.references">
