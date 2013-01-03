@@ -7,7 +7,12 @@ var slApp = angular.module('slApp', ['ngResource', 'ui','ui.directives', 'ui.fil
             templateUrl: 'static/templates/system-list.html',
             controller: SystemListCtrl
           })
-          .when('/:systemSlug', {
+          .when('/search', {
+            templateUrl: 'static/templates/system-list.html',
+            controller: SystemSearchCtrl,
+            reloadOnSearch:false,
+          })
+          .when('/system/:systemSlug', {
             templateUrl: 'static/templates/system-detail.html',
             controller: SystemDetailCtrl
           })
