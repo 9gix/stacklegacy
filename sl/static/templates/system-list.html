@@ -1,9 +1,15 @@
-<ul class="media-list row">
-    <li class="span3 media" ng-repeat="system in systems | filter:query">
+<div ng-switch on="query">
+  <div ng-switch-when="undefined" ng-switch-when="null">
+  <h3>StackLegacy:</h3>
+  <h4>The Reference to a Cutting Edge Technology Stacks & Architecture</h4></div>
+  <ul class="media-list row" ng-switch-default>
+    <li class="span3 media" ng-repeat="system in systems.objects">
       <a href="#/{{ system.slug }}" class="thumb"><img class="media-object" ng-src="{{ system.logo }}"></a>
       <div class="media-body">
         <a href="#/{{ system.slug }}" class="media-heading">{{ system.name }}</a>
         <p>{{ system.description }}</p>
       </div>
     </li>
-</ul>
+    <li ng-hide="systems.objects.length">No Results Found</li>
+  </ul>
+</div>

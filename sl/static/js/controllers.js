@@ -1,7 +1,12 @@
-function SystemListCtrl($scope, $http){
-    $http.get('stack/api/v1/system/?format=json&limit=20&order_by=-modified_at').success(function(data){
-        $scope.systems = data.objects;
-    });
+function SystemListCtrl($scope, $http, $resource){
+
+    $scope.sl = $resource('stack/api/v1/system/search/',
+        {format: 'json', q: ''});
+    
+    $scope.doSearch = function (){
+        $scope.systems = $scope.sl.get({q:$scope.query});
+    };
+
 }
 
 function SystemDetailCtrl($scope, $routeParams,  $http){

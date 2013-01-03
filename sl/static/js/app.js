@@ -1,6 +1,6 @@
 'use strict';
 
-var slApp = angular.module('slApp', ['ui','ui.directives', 'ui.filters'], 
+var slApp = angular.module('slApp', ['ngResource', 'ui','ui.directives', 'ui.filters'], 
     function($routeProvider, $locationProvider) {
         $routeProvider
           .when('/', {
