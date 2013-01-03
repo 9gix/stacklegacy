@@ -9,6 +9,7 @@
 
 {% block script %}
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-resource.js"></script>
   <script src="http://angular-ui.github.com/angular-ui/build/angular-ui.js"></script>
   <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
   <script src="{% static 'js/app.js' %}"></script>
@@ -17,7 +18,7 @@
 
 {% block navbar %}
 <form class="navbar-search pull-right">
-    <input class="search-query" type="text" placeholder="Filter" ng-model="query">
+    <input class="search-query" type="text" placeholder="Filter" ng-model="query" ng-change="doSearch()">
 </form>
 {% endblock %}
 
