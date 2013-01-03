@@ -1,0 +1,9 @@
+<ul class="media-list row">
+    <li class="span3 media" ng-repeat="system in systems | filter:query">
+      <a href="#/{{ system.slug }}" class="thumb"><img class="media-object" ng-src="{{ system.logo }}"></a>
+      <div class="media-body">
+        <a href="#/{{ system.slug }}" class="media-heading">{{ system.name }}</a>
+        <p>{{ system.description }}</p>
+      </div>
+    </li>
+</ul>

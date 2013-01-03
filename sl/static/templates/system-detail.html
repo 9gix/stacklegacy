@@ -1,0 +1,56 @@
+<header class="row">
+  <div class="span3">
+    <img ng-src="{{system.logo}}" class="system">
+  </div>
+  <div class="span8">
+    <h1>{{system.name}}</h1>
+    <p>{{system.description}}</p>
+    <p ng-show="system.official_site">Site: <a ng-href="{{system.official_site}}">{{system.official_site}}</a></p>
+  </div>
+</header>
+<aside class="span3">
+  <h2 ng-show="system.stacks">Stacks:</h2>
+  <ul>
+    <li ng-repeat="appstack in system.stacks">
+      <a ng-click="modalShown=true">{{appstack.stack.name}}</a>
+      <div ui-modal class="fade" ng-model="modalShown" id="appstack-{{appstack.id}}" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3>{{system.name}} using {{appstack.stack.name}}</h3>
+        </div>
+        <div class="modal-body">
+          <p>{{appstack.description}}</p>
+          <p ng-show="appstack.used_since">Since: {{appstack.used_since}}</p>
+          <p ng-show="appstack.used_until">Until: {{appstack.used_until}}</p>
+          <h4 ng-show="appstack.references.length">References:</h4>
+          <ul>
+            <li ng-repeat="reference in appstack.references">
+              <a ng-href="{{ reference.url }}">{{ reference.url }}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <a class="btn" ng-click="modalShown=false">Close</a>
+          <a class="btn btn-primary" ng-href="/#/{{appstack.stack.slug}}" ng-click="modalShown=false">Go to {{appstack.stack.name}}</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</aside>
+<section class="span8">
+  <div>
+    <h4 ng-show="system.architectures.length">Architectures:</h4>
+    <ul>
+      <li ng-repeat="architecture in system.architectures">
+        <h5>{{ architecture.title }}</h5>
+        <p>{{ architecture.description }}</p>
+        <h6 ng-show="architecture.resources.length">Reference</h6>
+        <ul>
+          <li ng-repeat="reference in architecture.references">
+            <a ng-href="{{reference.url}}">{{reference.url}}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>

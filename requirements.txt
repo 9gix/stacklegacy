@@ -1,0 +1,9 @@
+south>=0.7.6
+django-extensions>=1.0.1
+ipdb
+PIL>=1.1.7
+ipython>=0.13.1
+django-registration>=0.8
+django-debug-toolbar>=0.9.4
+django-imagekit>=2.0.2
+-e git://github.com/sbnoemi/django-tastypie.git#egg=django_tastypie
