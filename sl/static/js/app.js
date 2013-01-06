@@ -8,19 +8,19 @@ var slApp = angular.module('slApp', ['ngResource', 'ui','ui.directives', 'ui.fil
             controller: HomeCtrl
           })
           .when('/category/:categorySlug', {
-            templateUrl: 'static/templates/system-list.html',
+            templateUrl: 'static/templates/browse.html',
             controller: SystemListCtrl,
           })
           .when('/latest', {
-            templateUrl: 'static/templates/system-list.html',
+            templateUrl: 'static/templates/browse.html',
             controller: LatestSystemListCtrl,
           })
           .when('/recent', {
-            templateUrl: 'static/templates/system-list.html',
+            templateUrl: 'static/templates/browse.html',
             controller: UpdatedSystemListCtrl,
           })
           .when('/search', {
-            templateUrl: 'static/templates/system-list.html',
+            templateUrl: 'static/templates/browse.html',
             controller: SystemSearchCtrl,
             reloadOnSearch:false,
           })
