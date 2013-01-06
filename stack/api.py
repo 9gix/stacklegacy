@@ -1,7 +1,7 @@
 from tastypie.resources import Resource, ModelResource, ALL
 from tastypie import fields
 from tastypie.utils import trailing_slash
-from stack.models import App, AppStack, Architecture
+from stack.models import App, AppStack, Architecture, Category
 from django.conf.urls import url
 from django.core.paginator import Paginator, InvalidPage
 from haystack.query import SearchQuerySet
@@ -9,8 +9,8 @@ from haystack.query import SearchQuerySet
 class SystemResource(ModelResource):
     class Meta:
         queryset = App.objects.all()
-        ordering = ['modified_at']
-        fields = ['name', 'description', 'slug', 'modified_at','logo']
+        ordering = ['modified_at', 'created_at']
+        fields = ['name', 'description', 'slug', 'modified_at','logo', 'created_at']
         include_resource_uri = False
 
     def prepend_urls(self):
@@ -87,6 +87,11 @@ class StackResource(ModelResource):
 
     class Meta:
         queryset = App.objects.all()
+
+class CategoryResource(ModelResource):
+
+    class Meta:
+        queryset = Category.objects.exclude(app=None)
 
 from tastypie.contrib.contenttypes.fields import GenericForeignKeyField
 from ref.models import Reference

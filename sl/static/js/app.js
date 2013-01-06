@@ -4,8 +4,20 @@ var slApp = angular.module('slApp', ['ngResource', 'ui','ui.directives', 'ui.fil
     function($routeProvider, $locationProvider) {
         $routeProvider
           .when('/', {
+            templateUrl: 'static/templates/index.html',
+            controller: HomeCtrl
+          })
+          .when('/category/:categorySlug', {
             templateUrl: 'static/templates/system-list.html',
-            controller: SystemListCtrl
+            controller: SystemListCtrl,
+          })
+          .when('/latest', {
+            templateUrl: 'static/templates/system-list.html',
+            controller: LatestSystemListCtrl,
+          })
+          .when('/recent', {
+            templateUrl: 'static/templates/system-list.html',
+            controller: UpdatedSystemListCtrl,
           })
           .when('/search', {
             templateUrl: 'static/templates/system-list.html',
@@ -20,3 +32,11 @@ var slApp = angular.module('slApp', ['ngResource', 'ui','ui.directives', 'ui.fil
             redirectTo: '/'
           });
   });
+
+slApp.run(function($rootScope, $http) {
+});
+angular.injector(['ng']).invoke(function($rootScope, $http) {
+    $http.get('stack/api/v1/category/?format=json').success(function(result){
+         $rootScope.categories = result;
+    });
+});

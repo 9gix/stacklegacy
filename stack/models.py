@@ -21,6 +21,8 @@ class App(models.Model):
     stacks = models.ManyToManyField('self', through='AppStack',
             symmetrical=False)
 
+    categories = models.ManyToManyField('Category')
+
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
@@ -29,6 +31,7 @@ class App(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
     description = models.TextField(blank=True)
 
     def __unicode__(self):
@@ -37,7 +40,6 @@ class Category(models.Model):
 class AppStack(models.Model):
     app = models.ForeignKey('App', related_name="apps+")
     stack = models.ForeignKey('App', related_name="stacks+")
-    category = models.ForeignKey('Category', blank=True, null=True)
     description = models.TextField(blank=True)
     used_since = models.DateField(blank=True, null=True)
     used_until = models.DateField(blank=True, null=True)
