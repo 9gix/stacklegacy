@@ -1,0 +1,10 @@
+<ul class="media-list row" >
+  <li class="span3 media" ng-repeat="system in systems.objects">
+    <a href="#/system/{{ system.slug }}" class="thumb"><img class="media-object" ng-src="{{ system.logo }}"></a>
+    <div class="media-body">
+      <a href="#/system/{{ system.slug }}" class="media-heading">{{ system.name }}</a>
+      <p>{{ system.description }}</p>
+    </div>
+  </li>
+  <li ng-hide="systems.objects.length">No Results Found</li>
+</ul>

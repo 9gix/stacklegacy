@@ -1,9 +1,4 @@
-<div ng-switch on="query">
-  <div ng-switch-when="undefined" ng-switch-when="null">
-    <h3>StackLegacy:</h3>
-    <h4>The Reference to a Cutting Edge Technology Stacks & Architecture</h4>
-  </div>
-  <ul class="media-list row" ng-switch-default>
+  <ul class="media-list row" >
     <li class="span3 media" ng-repeat="system in systems.objects">
       <a href="#/system/{{ system.slug }}" class="thumb"><img class="media-object" ng-src="{{ system.logo }}"></a>
       <div class="media-body">
@@ -13,4 +8,3 @@
     </li>
     <li ng-hide="systems.objects.length">No Results Found</li>
   </ul>
-</div>
