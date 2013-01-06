@@ -131,6 +131,7 @@ INSTALLED_APPS = (
 
     # 3rd Party Apps
     'django_extensions',
+    'haystack',
     'imagekit',
     'registration',
     'south',
@@ -142,6 +143,15 @@ LOGIN_REDIRECT_URL = '/'
 
 # Django-Registration configuration
 ACCOUNT_ACTIVATION_DAYS = 7
+
+# Haystack Settings
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    }
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

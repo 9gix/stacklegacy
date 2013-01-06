@@ -15,6 +15,9 @@ class AppAdmin(admin.ModelAdmin):
 class AppStackAdmin(admin.ModelAdmin):
     inlines = [ReferenceInline,]
 
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
 admin.site.register(App, AppAdmin)
 admin.site.register(AppStack, AppStackAdmin)
 admin.site.register(Category)

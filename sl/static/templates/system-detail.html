@@ -1,11 +1,10 @@
-<header class="row">
+<header class="row page-header">
   <div class="span3">
     <img ng-src="{{system.logo}}" class="system">
   </div>
   <div class="span8">
-    <h1>{{system.name}}</h1>
+    <h1><a ng-href="{{ system.official_site }}" target="_blank">{{system.name}}</a></h1>
     <p>{{system.description}}</p>
-    <p ng-show="system.official_site">Site: <a ng-href="{{system.official_site}}">{{system.official_site}}</a></p>
   </div>
 </header>
 <aside class="span3">
@@ -31,7 +30,7 @@
         </div>
         <div class="modal-footer">
           <a class="btn" ng-click="modalShown=false">Close</a>
-          <a class="btn btn-primary" ng-href="/#/{{appstack.stack.slug}}" ng-click="modalShown=false">Go to {{appstack.stack.name}}</a>
+          <a class="btn btn-primary" ng-href="/#/system/{{appstack.stack.slug}}" ng-click="modalShown=false">Go to {{appstack.stack.name}}</a>
         </div>
       </div>
     </li>
