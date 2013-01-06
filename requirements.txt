@@ -15,7 +15,7 @@ PIL>=1.1.7
 django-imagekit>=2.0.2
 
 # Elastic Search
--e git://github.com/rhec/pyelasticsearch.git@master#egg=pyelasticsearch
+-e git://github.com/rhec/pyelasticsearch.git@682a26ce801f417a7a823f7c4ebe34a6afb10f54#egg=pyelasticsearch
 requests>=1.0.4
 -e git://github.com/toastdriven/django-haystack.git#egg=haystack
 
