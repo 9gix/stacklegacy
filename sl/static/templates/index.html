@@ -2,13 +2,13 @@
   <h1>StackLegacy <small>Reference of Cutting Edge Technology Stacks</small></h1>
   <p>A better way of learning and solving business problem with the right technology tools accross many different systems.</p>
 </header>
-<ul class="media-list row" >
-  <li class="span3 media" ng-repeat="system in systems.objects">
-    <a href="#/system/{{ system.slug }}" class="thumb"><img class="media-object" ng-src="{{ system.logo }}"></a>
-    <div class="media-body">
-      <a href="#/system/{{ system.slug }}" class="media-heading">{{ system.name }}</a>
-      <p>{{ system.description }}</p>
-    </div>
+<ul class="thumbnails" id="content">
+  <li class="span3" ng-repeat="system in systems.objects">
+    <a rel='popover' title='{{ system.description }}' class="thumbnail" href="#/system/{{ system.slug }}" ><img class="media-object" ng-src="{{ system.logo }}">
+      <div class="caption">
+        <h3>{{ system.name }}</h3>
+      </div>
+    </a>
   </li>
   <li ng-hide="systems.objects.length">No Results Found</li>
 </ul>
