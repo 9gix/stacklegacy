@@ -2,6 +2,7 @@ import json
 from django.http import HttpResponse
 from stack.models import App, AppStack
 from django.views.generic.detail import SingleObjectMixin, SingleObjectTemplateResponseMixin, BaseDetailView
+from django.views.generic import ListView
 
 class JSONResponseMixin(object):
     """
@@ -27,7 +28,7 @@ class JSONResponseMixin(object):
         # -- can be serialized as JSON.
         return json.dumps(context)
 
-class StackListView(JSONResponseMixin, BaseDetailView):
+class StackListView(ListView):
     model = App
 
 class StackDetailView(JSONResponseMixin, SingleObjectTemplateResponseMixin, BaseDetailView):
