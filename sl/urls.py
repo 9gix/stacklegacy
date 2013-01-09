@@ -8,6 +8,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^stack/', include('stack.urls')),
+    url(r'^stack/', include('stack.urls', namespace='stack', app_name='stack')),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

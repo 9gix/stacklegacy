@@ -2,7 +2,8 @@ import json
 from django.http import HttpResponse
 from stack.models import App, AppStack
 from django.views.generic.detail import SingleObjectMixin, SingleObjectTemplateResponseMixin, BaseDetailView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import UpdateView, CreateView, DeleteView
 
 class JSONResponseMixin(object):
     """
@@ -31,5 +32,11 @@ class JSONResponseMixin(object):
 class StackListView(ListView):
     model = App
 
-class StackDetailView(JSONResponseMixin, SingleObjectTemplateResponseMixin, BaseDetailView):
+class StackCreate(CreateView):
+    model = App
+
+class StackUpdate(UpdateView):
+    model = App
+
+class StackDelete(DeleteView):
     model = App
