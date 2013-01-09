@@ -16,23 +16,49 @@
   <script src="{% static 'js/controllers.js' %}"></script>
 {% endblock %}
 
-{% block navbar %}
-<ul class="nav">
-  <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="/#/latest">Latest System</a></li>
-        <li><a href="/#/recent">Recently Updated</a></li>
-      </ul>
-  </li>
-  <li>
-    <a href="http://blog.stacklegacy.com">Blog</a>
-  </li>
-</ul>
-<form class="navbar-search pull-right">
-    <input class="search-query" type="text" placeholder="Search" ng-model="query" ng-change="doSearch()">
-</form>
-{% endblock %}
+{% block body %}
+        <div ng-app="slApp" ng-controller="SystemListCtrl">
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="#">StackLegacy</a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="/#/latest">Latest System</a></li>
+                                    <li><a href="/#/recent">Recently Updated</a></li>
+                                  </ul>
+                              </li>
+                              <li>
+                                <a href="http://blog.stacklegacy.com">Blog</a>
+                              </li>
+                            </ul>
+                            <form class="navbar-search pull-right">
+                                <input class="search-query" type="text" placeholder="Search" ng-model="query" ng-change="doSearch()">
+                            </form>
+                        </div><!--/.nav-collapse -->
 
-{% block content %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div ng-view class="clearfix"></div>
+
+                <hr>
+
+                <footer>
+                    <p>&copy; StackLegacy 2013</p>
+                </footer>
+
+            </div> <!-- /container -->
+        </div>
 {% endblock %}
