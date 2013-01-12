@@ -3,108 +3,120 @@
 {% block content %}
 {% verbatim %}
 <div class='row'>
-  <section class='span4'>
-    <form action='' method='POST' class='form-horizontal'>
+  <section class='tabbable tabs-left span8'>
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#system" data-toggle="tab">System</a>
+      </li>
+      <li>
+        <a href="#architectures" data-toggle="tab">Architectures</a>
+      </li>
+      <li>
+        <a href="#stacks" data-toggle="tab">Stacks</a>
+      </li>
+    </ul>
+    <div class="tab-content span5">
+      <section class="tab-pane active" id="system">
+        <form action='' method='POST' class='form-horizontal'>
+            <legend>System Detail</legend>
+            <div class='control-group'>
+              <label for='name' class='control-label'>Name</label>
+              <div class='controls'>
+                <input id="name" type="text" value="" maxlength="150" />
+              </div>
+            </div>
 
-        <legend>System Detail</legend>
-        <div class='control-group'>
-          <label for='name' class='control-label'>Name</label>
-          <div class='controls'>
-            <input id="name" type="text" value="" maxlength="150" />
-          </div>
-        </div>
+            <div class='control-group'>
+              <label for='description' class='control-label'>Description</label>
+              <div class='controls'>
+                <textarea id='description' rows="10" cols="40"></textarea>
+              </div>
+            </div>
 
-        <div class='control-group'>
-          <label for='description' class='control-label'>Description</label>
-          <div class='controls'>
-            <textarea id='description' rows="10" cols="40"></textarea>
-          </div>
-        </div>
+            <div class='control-group'>
+              <label for='logo' class='control-label'>Logo</label>
+              <div class='controls'>
+                <input type="file" id="logo" />
+                <label for="logo-clear" class="checkbox"><input type="checkbox" id="logo-clear" />Clear</label>
+              </div>
+            </div>
 
-        <div class='control-group'>
-          <label for='logo' class='control-label'>Logo</label>
-          <div class='controls'>
-            <input type="file" id="logo" />
-            <label for="logo-clear" class="checkbox"><input type="checkbox" id="logo-clear" />Clear</label>
-          </div>
-        </div>
+            <div class='control-group'>
+              <label for="slug" class='control-label'>Slug</label>
+              <div class='controls'>
+                <input id="slug" type="text" value="" maxlength="50" />
+              </div>
+            </div>
 
-        <div class='control-group'>
-          <label for="slug" class='control-label'>Slug</label>
-          <div class='controls'>
-            <input id="slug" type="text" value="" maxlength="50" />
-          </div>
-        </div>
+            <div class='control-group'>
+              <label for="oficial_site" class='control-label'>Official site</label>
+              <div class='controls'>
+                <input id="official_site" type="text" value="" maxlength="200" />
+              </div>
 
-        <div class='control-group'>
-          <label for="oficial_site" class='control-label'>Official site</label>
-          <div class='controls'>
-            <input id="official_site" type="text" value="" maxlength="200" />
-          </div>
+            </div>
 
-        </div>
+            <div class='control-group'>
+              <label for="categories" class='control-label'>Categories</label>
+              <div class='controls'>
+                <input id="categories" type="text" value=""/>
+              </div>
+            </div>
 
-        <div class='control-group'>
-          <label for="categories" class='control-label'>Categories</label>
-          <div class='controls'>
-            <input id="categories" type="text" value=""/>
-          </div>
-        </div>
-
-        <div class='control-group'>
-          <div class='controls'>
-            <button type='submit' class='btn btn-primary' >Submit</button>
-          </div>
-        </div>
-    </form>
-  </section>
-  <section class='span4'>
-    <legend>Architectures</legend>
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Caption</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Awesome</td>
-          <td>
-            <a href='#' class='btn btn-info'>View</a>
-            <a href='#' class='btn btn-warning'>Edit</a>
-            <a href='#' class='btn btn-danger'>Delete</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <a href='#' class='btn btn-info'>Add Architecture</a>
-  </section>
-  <section class='span4'>
-    <legend>Stacks</legend>
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Caption</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Awesome</td>
-          <td>
-            <a href='#' class='btn btn-info'>View</a>
-            <a href='#' class='btn btn-warning'>Edit</a>
-            <a href='#' class='btn btn-danger'>Delete</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <a href='#' class='btn btn-info'>Add Architecture</a>
+            <div class='control-group'>
+              <div class='controls'>
+                <button type='submit' class='btn btn-primary' >Submit</button>
+              </div>
+            </div>
+        </form>
+      </section>
+      <section class="tab-pane" id="architectures">
+        <legend>Architectures</legend>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Caption</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Awesome</td>
+              <td>
+                <a href='#' class='btn btn-warning'>Edit</a>
+                <a href='#' class='btn btn-danger'>Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a href='#' class='btn btn-info'>Add Architecture</a>
+      </section>
+      <section class="tab-pane" id="stacks">
+        <legend>Stacks</legend>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Caption</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Awesome</td>
+              <td>
+                <a href='#' class='btn btn-warning'>Edit</a>
+                <a href='#' class='btn btn-danger'>Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <a href='#' class='btn btn-info'>Add Stack</a>
+      </section>
+    </div>
   </section>
 </div>
 {% endverbatim %}
