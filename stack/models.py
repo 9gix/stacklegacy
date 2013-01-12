@@ -49,7 +49,6 @@ class AppStack(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return "%(app)s Stack (%(category)s: %(stack)s)" % \
+        return "%(app)s - %(stack)s" % \
                 {'app':self.app,
-                'category':self.category,
                 'stack':self.stack}
