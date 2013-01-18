@@ -1,4 +1,5 @@
 {% extends "stack/base.html" %}
+{% load admin_urls %}
 
 {% block content %}
 <h2>Systems & Stacks</h2>
@@ -34,8 +35,8 @@
         </ul>
       </td>
       <td>
-        <a href='{% url "stack:stack-update" app.slug %}' class='btn btn-primary'>Edit</a>
-        <a href='{% url "stack:stack-delete" app.slug %}' class='btn btn-danger'>Delete</a>
+        <a href='{% url "stack:stack-update" app.slug %}' class='btn btn-warning'>Edit</a>
+        <a href='{% url app_meta|admin_urlname:'delete' app.id %}' class='btn btn-danger'>Delete</a>
       </td>
     </tr>
   {% endfor %}

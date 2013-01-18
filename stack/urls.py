@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url, include
-from stack.views import StackListView, StackUpdate, StackCreate, StackDelete
+from stack.views import StackListView, StackUpdate, StackCreate, StackDelete, StackDetailView
 
 from tastypie.api import Api
 from stack.api import AppResource, AppStackResource, StackResource, ReferenceResource, ArchitectureResource, SystemResource, CategoryResource
@@ -22,5 +22,7 @@ urlpatterns = patterns('',
         name='stack-update'),
     url(r'^add/$', StackCreate.as_view(),
         name='stack-create'),
+    url(r'^view/(?P<slug>[-_\w]+)/$', StackDetailView.as_view(),
+        name='stack-detail'),
     url(r'^$', StackListView.as_view(), name='stack-list'),
 )

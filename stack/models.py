@@ -19,7 +19,7 @@ class App(models.Model):
     slug = models.SlugField(unique=True)
     official_site = models.URLField(null=True, blank=True)
     stacks = models.ManyToManyField('self', through='AppStack',
-            symmetrical=False)
+            symmetrical=False, blank=True)
 
     categories = models.ManyToManyField('Category')
 
@@ -28,6 +28,10 @@ class App(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('stack:stack-detail', [self.slug])
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -38,8 +42,8 @@ class Category(models.Model):
         return self.name
 
 class AppStack(models.Model):
-    app = models.ForeignKey('App', related_name="apps+")
-    stack = models.ForeignKey('App', related_name="stacks+")
+    app = models.ForeignKey('App', related_name="app_stacks")
+    stack = models.ForeignKey('App', related_name="stack_set")
     description = models.TextField(blank=True)
     used_since = models.DateField(blank=True, null=True)
     used_until = models.DateField(blank=True, null=True)
