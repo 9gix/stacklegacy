@@ -1,0 +1,45 @@
+{% extends "stack/base.html" %}
+{% load admin_urls %}
+
+{% block content %}
+<h2>Systems & Stacks</h2>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>System Name</th>
+      <th>Short Description</th>
+      <th>Stacks</th>
+      <th>Architectures</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for app in object_list %}
+    <tr>
+      <td>{{ app.id }}</td>
+      <td><a href=''>{{ app.name }}</a></td>
+      <td>{{ app.description|linebreaks|truncatewords:5 }}</td>
+      <td>
+        <ul>
+        {% for stack in app.stacks.all %}
+          <li>{{ stack }}</li>
+        {% endfor %}
+        </ul>
+      </td>
+      <td>
+        <ul>
+        {% for arc in app.architecture_set.all %}
+          <li>{{ arc.title }}</li>
+        {% endfor %}
+        </ul>
+      </td>
+      <td>
+        <a href='{% url "stack:stack-update" app.slug %}' class='btn btn-warning'>Edit</a>
+        <a href='{% url app_meta|admin_urlname:'delete' app.id %}' class='btn btn-danger'>Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

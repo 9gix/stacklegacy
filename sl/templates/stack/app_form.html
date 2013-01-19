@@ -1,0 +1,140 @@
+{% extends "stack/base.html" %}
+{% load admin_urls %}
+
+{% block content %}
+<div class='row'>
+  <section class='tabbable tabs-left span8'>
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#system" data-toggle="tab">System</a>
+      </li>
+      <li>
+        <a href="#architectures" data-toggle="tab">Architectures</a>
+      </li>
+      <li>
+        <a href="#stacks" data-toggle="tab">Stacks</a>
+      </li>
+    </ul>
+    <div class="tab-content span5">
+      <section class="tab-pane active" id="system">
+        <form action='' method='POST' class='form-horizontal'>
+            {% csrf_token %}
+            <legend>System Detail</legend>
+            {% if form.errors %}
+            <div class="alert alert-error">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong>Fail: </strong>Please Correct your input below!!
+              {{ form.errors }}
+            </div>
+            {% endif %}
+            <div class='control-group {% if form.name.errors %}error{% endif %}'>
+              <label for='name' class='control-label'>Name</label>
+              <div class='controls'>
+                {{ form.name }}
+                <span class="help-inline">{{ form.name.errors }}</span>
+              </div>
+            </div>
+
+            <div class='control-group {% if form.description.errors %}error{% endif %}'>
+              <label for='description' class='control-label'>Description</label>
+              <div class='controls'>
+                {{ form.description }}
+                <span class="help-inline">{{ form.description.errors }}</span>
+              </div>
+            </div>
+
+            <div class='control-group {% if form.logo.errors %}error{% endif %}'>
+              <label for='logo' class='control-label'>Logo</label>
+              <div class='controls'>
+                {{ form.logo }}
+                <span class="help-inline">{{ form.logo.errors }}</span>
+                <label for="logo-clear" class="checkbox"><input type="checkbox" id="logo-clear" />Clear</label>
+              </div>
+            </div>
+
+            <div class='control-group {% if form.slug.errors %}error{% endif %}'>
+              <label for="slug" class='control-label'>Slug</label>
+              <div class='controls'>
+                {{ form.slug }}
+                <span class="help-inline">{{ form.slug.errors }}</span>
+              </div>
+            </div>
+
+            <div class='control-group {% if form.official_site.errors %}error{% endif %}'>
+              <label for="oficial_site" class='control-label'>Official site</label>
+              <div class='controls'>
+                {{ form.official_site }}
+                <span class="help-inline">{{ form.official_site.errors }}</span>
+              </div>
+
+            </div>
+
+            <div class='control-group {% if form.categories.errors %}error{% endif %}'>
+              <label for="categories" class='control-label'>Categories</label>
+              <div class='controls'>
+                {{ form.categories }}
+                <span class="help-inline">{{ form.categories.errors }}</span>
+              </div>
+            </div>
+
+            <div class='control-group'>
+              <div class='controls'>
+                <button type='submit' class='btn btn-primary' >Submit</button>
+              </div>
+            </div>
+        </form>
+      </section>
+      <section class="tab-pane" id="architectures">
+        <legend>Architectures</legend>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for arc in object.architectures.all %}
+            <tr>
+              <td>{{ arc.title }}</td>
+              <td>{{ arc.description }}</td>
+              <td>
+                <a href='{% url architecture_meta|admin_urlname:'change' arc.id%}' class='btn btn-warning'>Edit</a>
+                <a href='{% url architecture_meta|admin_urlname:'delete' arc.id %}' class='btn btn-danger'>Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <a href='{% url architecture_meta|admin_urlname:'add' %}' class='btn btn-danger'>Add Architecture</a>
+      </section>
+      <section class="tab-pane" id="stacks">
+        <legend>Stacks</legend>
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for app_stack in object.app_stacks.all %}
+            <tr>
+              <td>{{ app_stack.stack.name }}</td>
+              <td>{{ app_stack.description }}</td>
+              <td>
+                <a href='{% url app_stack_meta|admin_urlname:'change' app_stack.id%}' class='btn btn-warning'>Edit</a>
+                <a href='{% url app_stack_meta|admin_urlname:'delete' app_stack.id %}' class='btn btn-danger'>Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <a href='{% url app_stack_meta|admin_urlname:'add' %}' class='btn btn-danger'>Add Stack</a>
+      </section>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block script %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.9/backbone-min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="/">StackLegacy</a>
+                <ul class="nav">
+                  <li><a href="/stack">Admin</a></li>
+                  <li><a href="/stack/add">Add Stack</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+          <div class="container">
+
+              <div class="clearfix">
+                {% block content %}{% endblock %}
+              </div>
+
+              <hr>
+
+              <footer>
+                  <p>&copy; StackLegacy 2013</p>
+              </footer>
+
+          </div> <!-- /container -->
+{% endblock %}
