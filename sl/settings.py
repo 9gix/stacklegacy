@@ -140,6 +140,7 @@ INSTALLED_APPS = (
 
 # django.contrib.auth settings
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/admin/'
 
 # Django-Registration configuration
 ACCOUNT_ACTIVATION_DAYS = 7
